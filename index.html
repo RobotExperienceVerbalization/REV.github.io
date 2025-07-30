@@ -90,13 +90,65 @@
                     
                     <div class="col-sm-4 text-center">
                         <p>
-                        The method comprises two main modules: the Question Answering (QA) module and the Question Generation (QG) module.
-                        The QA module utilizes an existing question definition to extract parameters from the input question, leveraging the Question Template, followed by the sequential execution of the Select, Search, and Evaluate strategies. The outcome of the evaluation step is used to populate an Answer Template, resulting in a natural language response.
-                        The QG module handles previously unseen questions by abstracting them into a Question Template for future matching. It then defines the corresponding Select, Search, and Evaluate strategies -- optionally leveraging a large language model (LLM) -- and generates a corresponding Answer Template.
+                        The method comprises two main modules: the <strong>Question Answering (QA)</strong> module and the <strong>Question Generation (QG)</strong> module.
+                        The QA module utilizes an existing question definition to extract parameters from the input question, leveraging the <em>Question Template</em>, 
+                        followed by the sequential execution of the <em>Select</em>, <em>Search</em>, and <em>Evaluate</em> strategies. 
+                        The outcome of the evaluation step is used to populate an <em>Answer Template</em>, resulting in a natural language response.
+                        The QG module handles previously unseen questions by abstracting them into a <em>Question Template</em> for future matching. 
+                        It then defines the corresponding <em>Select</em>, <em>Search</em>, and <em>Evaluate</em>  strategies - 
+                        optionally leveraging a large language model (LLM) - and generates a corresponding <em>Answer Template</em>.
                         </p>
                     </div>
                     <div class="col-sm-4 text-center">
-                        <image src="images/MethodOverview.png" height="750px"></image>
+                        <image src="images/MethodOverview.png" height="500px"></image>
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        <p>
+                        <h4>Question Templates and Match-Checker:</h4>
+                        A Question Template is a string pattern with placeholders used to generalize similar questions. 
+                        GPT-4o-mini matches input questions to templates at runtime. 
+                        If no match is found, the Question Generation module abstracts key elements and creates a new Question Definition, including search and evaluation strategies. 
+                        The system provides context (e.g., valid actions, objects) to help identify variable parts. 
+                        When a match occurs, GPT-4o-mini extracts parameters to fill the template.
+                        The model handles variations like anaphora and tense through context to improve matching and extraction.
+                        <br>
+                        <br>
+                        <h4>Selection Strategy</h4>
+                        The Selection strategy retrieves relevant memory entities using a memory ID, which uniquely identifies an entity or memory segment. 
+                        For generating new Question Definitions, the model is given brief descriptions of memory segments and uses semantically meaningful entity names to infer relevance. 
+                        The robotic framework allows easy access to all snapshots tied to a memory ID. 
+                        When a question spans multiple sources, the system selects multiple memory IDs. 
+                        For example, answering “Which objects did you see in the dishwasher the last time you opened it?” requires both scene and action history data, retrieved from separate memory servers. 
+                        The strategy includes both IDs for coordinated access.
+                        <br>
+                        <br>
+                        <h4>Search Strategy</h4>
+                        The Search strategy defines how to traverse memory snapshots selected during Selection, based on the temporal semantics of a question. 
+                        For example, phrases like “the last time you...” trigger a reverse chronological search, while “last week” prompts filtering by date. 
+                        Supported strategies include reverse or forward search from specific points (LAST, EARLIEST, BEFORE, AFTER), filtering by time range (DURATION), or retrieving the most recent snapshot (CURRENT).
+                        <br>
+                        <br>
+                        <h4>Evaluation Strategy</h4>
+                        The Evaluation strategy determines if a memory snapshot can answer a question and extracts the relevant information in human-readable form. 
+                        These are implemented as user-defined functions that operate on snapshot content and metadata, enabling domain-specific logic. 
+                        When generating new Question Definitions, the language model creates these functions using utility methods and free-form code.
+
+                        The first function checks if a snapshot is relevant; if so, the second extracts the needed data to fill the Answer Template. 
+                        Both functions use input parameters, including values from the Question Template. 
+                        If multiple entities are involved, the process runs iteratively, passing output from one step into the next.
+
+                        For example, to answer “Which objects did you see in the dishwasher the last time you opened it?”, the strategy first identifies the action of opening the dishwasher, records the time, 
+                        and then uses that timestamp to query the scene memory. 
+                        If the timing aligns, the system retrieves objects located "in the dishwasher" using semantic matching, then composes the final answer from this data.
+                        </p>
+                        <br>
+                        <br>
+                        <h4>Answer Template</h4>
+                        The Answer Template is the final step in both question answering and generation. 
+                        Similar to a Question Template, it’s a sentence with placeholders for dynamic content—drawn from the input question, the Evaluation output, or both. 
+                        The system supports list formatting for natural language flow, using commas and “and” before the final item. 
+                        For example, “The last time I [1] I saw [0]” could become “The last time I opened the dishwasher I saw a red mug, a red plate, and a green bowl.” 
+                        This templating approach allows the system to generate fluent, context-aware responses based on user queries and episodic memory.
                     </div>
                 </div>     
             </div>
