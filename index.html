@@ -84,16 +84,20 @@
             <hr/>
 
             <div class="col-md-12">
-                        <h2><strong>Method Overview</strong></h2>
+                <h2><strong>Method Overview</strong></h2>
                          <br>
-                        <image src="images/MethodOverview.png" height="1000px"></image>
-                        
-                        <p>
-    The method comprises two main modules: the Question Answering (QA) module and the Question Generation (QG) module.
-    The QA module utilizes an existing question definition to extract parameters from the input question, leveraging the Question Template, followed by the sequential execution of the Select, Search, and Evaluate strategies. The outcome of the evaluation step is used to populate an Answer Template, resulting in a natural language response.
-    The QG module handles previously unseen questions by abstracting them into a Question Template for future matching. It then defines the corresponding Select, Search, and Evaluate strategies -- optionally leveraging a large language model (LLM) -- and generates a corresponding Answer Template.
-                        </p>
+                <div class="col-sm-3 text-center">
+                    <image src="images/MethodOverview.png" height="1000px"></image>
                 </div>
+                <div class="col-sm-3 text-center">
+                    <p>
+                    The method comprises two main modules: the Question Answering (QA) module and the Question Generation (QG) module.
+                    The QA module utilizes an existing question definition to extract parameters from the input question, leveraging the Question Template, followed by the sequential execution of the Select, Search, and Evaluate strategies. The outcome of the evaluation step is used to populate an Answer Template, resulting in a natural language response.
+                    The QG module handles previously unseen questions by abstracting them into a Question Template for future matching. It then defines the corresponding Select, Search, and Evaluate strategies -- optionally leveraging a large language model (LLM) -- and generates a corresponding Answer Template.
+                    </p>
+                </div>
+                        
+            </div>
 
             <hr/>
 
