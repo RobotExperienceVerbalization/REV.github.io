@@ -71,17 +71,10 @@ Our system implements strategies to retrieve and transform memory representation
                 </div>
             </div>
 
-            <div class="col-md-2 text-center">
-                    <a href="https://git.h2t.iar.kit.edu/sw/armarx/skills/verbalization">
-                        <image src="data/github.png" height="60px"></image>
-                        <h4><strong>Code</strong></h4>
-                    </a>
-            </div>
-
             <hr/>
 
-            <div class="col-md-2 text-center">
-                        <image src="images/MethodOverview.png" height="600px"></image>
+            <div class="col-md-12">
+                        <image src="images/MethodOverview.png" height="1000px"></image>
                         <h4><strong>Method Overview</strong></h4>
                         <p>
                             Overview of our proposed method.
@@ -89,13 +82,12 @@ Our system implements strategies to retrieve and transform memory representation
     The QA module utilizes an existing question definition to extract parameters from the input question, leveraging the Question Template, followed by the sequential execution of the Select, Search, and Evaluate strategies. The outcome of the evaluation step is used to populate an Answer Template, resulting in a natural language response.
     The QG module handles previously unseen questions by abstracting them into a Question Template for future matching. It then defines the corresponding Select, Search, and Evaluate strategies -- optionally leveraging a large language model (LLM) -- and generates a corresponding Answer Template.
                         </p>
-                    </a>
                 </div>
 
             <hr/>
 
-            <div class="col-md-2 text-center">
-                        <image src="images/results_table.png" height="600px"></image>
+            <div class="col-md-12 text-center">
+                        <image src="images/results_table.png" height="500px"></image>
                         <h4><strong>Results Overview</strong></h4>
                         <p>
                             The evaluation revealed that automatically generated question definitions achieved a 53.12% success rate, which improved to 89.41% with human-in-the-loop adjustments. 
@@ -111,7 +103,6 @@ Our system implements strategies to retrieve and transform memory representation
                             Our method outperformed in these areas, avoided partially correct answers, and offered greater consistency and reliability once definitions were established. 
                             However, our system’s main limitation lies in the LLM’s ability to generate complex question definitions and its reliance on a rigid formalism that limits flexibility.
                         </p>
-                    </a>
                 </div>
 
             <hr/>
