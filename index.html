@@ -166,6 +166,16 @@
                 <div class="col-sm-6">
                     <br>
                     <h4>Experiment Setup and Evaluation Scenario</h4>
+                    <p>
+                        For evaluation, we use a humanoid robot ARMAR-7 performing household tasks like fetching objects, handing them over, and inspecting environments. 
+                        Over five days across two months, we recorded 87 task episodes (avg. 16.65 minutes each), forming the evaluation dataset. 
+                        Each episode includes internal robot state, visual data (RGB-stereo and depth), semantic and symbolic scene representations, and transcribed speech.
+                        We use GPT-4o-mini for frequent match-checking tasks and GPT-4.1 for question generation, benefiting from its stronger reasoning. 
+                        For initial testing, the model is guided by five randomly selected question definitions (from six total), 
+                        each reflecting different search strategies, excluding the one for the current question. 
+                        Expert users can define question behavior using templates tied to a class structure for select, search, and evaluation strategies. 
+                        The final output is a natural language answer, which can be spoken via the robot's text-to-speech system.
+                    </p>
                 </div>
                 <div class="col-sm-6">
                     <h4>Examples of QuestionDefinitions</h4>
@@ -176,7 +186,7 @@
                         </a>.
                         <br>
                         The provided examples for manual definition are the six examples from which 5 were randomly chosen as prompt examples for the LLM during generation.
-                        
+
                     </p>
                 </div>
             </div>
