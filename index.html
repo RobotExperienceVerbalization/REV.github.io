@@ -162,11 +162,13 @@
             <div class="col-md-12 text-center">
                 <h2>Results Overview</h2>
             </div>
-            <div class="col-md-12">
-                 <br>
+            <div class=""row">
+                <div class="col-md-6 text-center">
+                    <br>
                         <image src="images/results_table.png" height="500px"></image>
-                        
-                        <p>
+                </div>
+                <div class="col-md-6">
+                    <p>
                             The evaluation revealed that automatically generated question definitions achieved a 53.12% success rate, which improved to 89.41% with human-in-the-loop adjustments. 
                             Simple question types (e.g., L.1, A.5) were accurately handled, while complex ones, especially involving multiple memory servers (C.1–C.3) or temporal reasoning (C.4), posed significant challenges. 
                             Minor manual interventions by expert users, like converting language expressions to internal identifiers, notably enhanced accuracy. 
@@ -179,8 +181,9 @@
                             While the LLM excelled at core action-related queries, it struggled with peripheral or counting-related ones. 
                             Our method outperformed in these areas, avoided partially correct answers, and offered greater consistency and reliability once definitions were established. 
                             However, our system’s main limitation lies in the LLM’s ability to generate complex question definitions and its reliance on a rigid formalism that limits flexibility.
-                        </p>
+                    </p>
                 </div>
+            </div>
 
             <hr/>
 
