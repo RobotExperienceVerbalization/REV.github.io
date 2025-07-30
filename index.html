@@ -34,7 +34,7 @@
                 </div>
                 <div class="offset-sm-3 col-sm-3 text-center">
                     <a href="//kit.edu">
-                        <img src="data/kit.svg" class="top-logo"></img>
+                        <img src="images/kit_logo.png" class="top-logo"></img>
                         <br/>
                         <sup>1</sup>Karlsruhe Institute of Technology, Germany
                     </a>
@@ -47,13 +47,13 @@
             <div class="row justify-content-md-center">
                 <div class="col-md-2 text-center">
                     <a href="https://arxiv.org/abs/2409.17702">
-                        <image src="data/paper_small.png" height="60px"></image>
+                        <image src="images/paper_small.png" height="60px"></image>
                         <h4><strong>Paper</strong></h4>
                     </a>
                 </div>
                 <div class="col-md-2 text-center">
                     <a href="https://git.h2t.iar.kit.edu/sw/armarx/skills/verbalization">
-                        <image src="data/github.png" height="60px"></image>
+                        <image src="images/github.png" height="60px"></image>
                         <h4><strong>Code</strong></h4>
                     </a>
                 </div>
@@ -70,6 +70,42 @@ Our system implements strategies to retrieve and transform memory representation
                     </p>
                 </div>
             </div>
+
+            <hr/>
+
+            <div class="col-md-2 text-center">
+                        <image src="images/MethodOverview.png" height="600px"></image>
+                        <h4><strong>Method Overview</strong></h4>
+                        <p>
+                            Overview of our proposed method.
+    The method comprises two main modules: the Question Answering (QA) module and the Question Generation (QG) module.
+    The QA module utilizes an existing question definition to extract parameters from the input question, leveraging the Question Template, followed by the sequential execution of the Select, Search, and Evaluate strategies. The outcome of the evaluation step is used to populate an Answer Template, resulting in a natural language response.
+    The QG module handles previously unseen questions by abstracting them into a Question Template for future matching. It then defines the corresponding Select, Search, and Evaluate strategies -- optionally leveraging a large language model (LLM) -- and generates a corresponding Answer Template.
+                        </p>
+                    </a>
+                </div>
+
+            <hr/>
+
+            <div class="col-md-2 text-center">
+                        <image src="images/results_table.png" height="600px"></image>
+                        <h4><strong>Results Overview</strong></h4>
+                        <p>
+                            The evaluation revealed that automatically generated question definitions achieved a 53.12% success rate, which improved to 89.41% with human-in-the-loop adjustments. 
+                            Simple question types (e.g., L.1, A.5) were accurately handled, while complex ones, especially involving multiple memory servers (C.1–C.3) or temporal reasoning (C.4), posed significant challenges. 
+                            Minor manual interventions by expert users, like converting language expressions to internal identifiers, notably enhanced accuracy. 
+                            Defining new question types took an average of 37.84 seconds, whereas answering based on pre-defined templates averaged 4.73 seconds and consumed only 326 tokens. 
+                            Most processing effort occurred during the offline generation phase.
+                            
+                            In comparison, a pure LLM-based approach (per Bärmann et al.) achieved 5 fully and 2 partially correct answers out of 12 representative questions, 
+                            where our approach generated 4 definitions fully correct on the first try and 5 definitions requiring only minor manual interventions for correct answers. 
+                            The LLM-based approach consumed significantly more tokens (48,200/question) and showed higher latency (14.83 s/question). 
+                            While the LLM excelled at core action-related queries, it struggled with peripheral or counting-related ones. 
+                            Our method outperformed in these areas, avoided partially correct answers, and offered greater consistency and reliability once definitions were established. 
+                            However, our system’s main limitation lies in the LLM’s ability to generate complex question definitions and its reliance on a rigid formalism that limits flexibility.
+                        </p>
+                    </a>
+                </div>
 
             <hr/>
 
