@@ -193,3 +193,7 @@ span.highlight {
     resize: vertical;
 }
 
+image {
+    max-height: 750px;
+    max-width:fit-content;
+}
